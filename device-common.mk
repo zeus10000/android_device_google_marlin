@@ -472,3 +472,17 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+PRODUCT_ENFORCE_VINTF_MANIFEST := false
+PRODUCT_PACKAGES += vulkan.pastel
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.bpf.kver_override=5.4.312
+PRODUCT_VENDOR_PROPERTIES += ro.bpf.kver_override=5.4.312
+PRODUCT_VENDOR_PROPERTIES += init.svc_debug.no_fatal.surfaceflinger=true
+PRODUCT_VENDOR_PROPERTIES += sys.oem_unlock_allowed=0
+PRODUCT_COPY_FILES += device/google/marlin/init.marlin_bootfix.rc:vendor/etc/init/init.marlin_bootfix.rc
+
+PRODUCT_PACKAGES += gralloc.msm8996 hwcomposer.msm8996 libsdmcore libqservice libqdutils libsdmutils libqdMetaData
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=mtp,adb
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.adb.root=1
+PRODUCT_COPY_FILES += device/google/marlin/adb/adb_keys:vendor/adb_keys
+PRODUCT_VENDOR_PROPERTIES += ro.adb.secure?=0

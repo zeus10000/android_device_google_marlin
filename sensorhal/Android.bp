@@ -13,3 +13,17 @@ cc_library_static {
     ],
     header_libs: ["libhardware_headers"],
 }
+
+cc_prebuilt_library_shared {
+    name: "sensors.nanohub",
+    vendor: true,
+    relative_install_path: "hw",
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["sensors.nanohub_64.so"] },
+        android_arm: { srcs: ["sensors.nanohub_32.so"] },
+    },
+    compile_multilib: "both",
+}

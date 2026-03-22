@@ -1,0 +1,4 @@
+# init needs bootctl binder access for A/B mark-boot-successful
+binder_call(init, hal_bootctl_server)
+allow init hal_bootctl_service:service_manager find;
+allow init system_file:file execute_no_trans;

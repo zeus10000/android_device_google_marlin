@@ -1,0 +1,2 @@
+# misctrl needs to read device tree firmware info
+allow misctrl sysfs_dt_firmware_android:file { read open getattr };

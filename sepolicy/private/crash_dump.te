@@ -1,0 +1,2 @@
+# crash_dump needs ptrace on keystore (b/376065666)
+allow crash_dump keystore:process ptrace;

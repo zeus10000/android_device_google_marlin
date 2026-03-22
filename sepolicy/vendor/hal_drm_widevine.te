@@ -1,5 +1,5 @@
 allow hal_drm mediacodec:fd use;
-allow hal_drm { appdomain -isolated_app }:fd use;
+allow hal_drm { appdomain -isolated_app_all }:fd use;
 
 # The Qualcomm DRM-HAL implementation uses a vendor-binder service provided
 # by the HWC HAL.

@@ -1,26 +1,5 @@
-# symlink /sdcard to backing block
-allow init tmpfs:lnk_file create;
-
-# Run "ifup lo" to bring up the localhost interface
-allowxperm init self:udp_socket ioctl { SIOCSIFFLAGS };
-
-allow init proc_kernel_sched:file w_file_perms;
-allow init sysfs_type:lnk_file read;
-
-allow init firmware_file:dir mounton;
+# init needs to mount /persist and relabel debugfs on msm8996
 allow init persist_file:dir mounton;
-allow init userdata_block_device:blk_file { write };
-
-allow init persist_block_device:lnk_file relabelto;
-
-# b/70518189 vDSO experiments
-allow init sysfs_vdso:file w_file_perms;
-
-allow init hwservicemanager:binder { call transfer };
-
-allow init sysfs_scsi_devices_0000:file rw_file_perms;
-
-allow init debugfs_ipc:file relabelfrom;
-allow init debugfs_ipc:dir relabelfrom;
-allow init debugfs_usb:file relabelfrom;
-allow init debugfs_usb:dir relabelfrom;
+allow init debugfs_ipc:{ dir file } relabelfrom;
+allow init debugfs_usb:{ dir file } relabelfrom;
+allow init sysfs_scsi_devices_0000:file write;

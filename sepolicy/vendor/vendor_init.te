@@ -57,3 +57,7 @@ get_prop(vendor_init, hw_sku_prop)
 set_prop(vendor_init, radio_prop)
 set_prop(vendor_init, vendor_thermal_prop)
 get_prop(vendor_init, wc_prop)
+
+# vendor_init needs cpuset and property access
+allow vendor_init device:file { create write };
+allow vendor_init device:dir add_name;

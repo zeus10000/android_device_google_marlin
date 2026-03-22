@@ -1,0 +1,2 @@
+# servicemanager needs to transfer binder calls to init for bootctl
+allow servicemanager init:binder transfer;

@@ -31,3 +31,6 @@ get_prop(system_server, userspace_reboot_config_prop);
 get_prop(system_server, userspace_reboot_exported_prop);
 
 allow system_server system_file:file ioctl;
+
+# watchdog needs to read binder debugfs transactions
+allow system_server debugfs:file { read open getattr };

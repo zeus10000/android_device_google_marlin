@@ -1,0 +1,4 @@
+on post-fs-data
+    # Mark boot as successful to prevent A/B rollback
+    exec -- /system/bin/bootctl mark-boot-successful
+    setprop sys.boot_completed 1

@@ -539,6 +539,7 @@ on property:wc_transport.start_root=false
     stop vendor.hci_filter_root
 
 service vendor.per_mgr /vendor/bin/pm-service
+    disabled
     class core
     user system
     group system

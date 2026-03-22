@@ -4,6 +4,8 @@ soong_namespace {
         "hardware/google/pixel",
         "hardware/qcom/media/msm8996",
         "hardware/qcom/display/msm8996",
+        "hardware/qcom-caf/msm8996/media",
+        "hardware/qcom-caf/msm8996/display",
     ],
 }
 
@@ -11,4 +13,3 @@ subdirs = [
     "vibrator",
     "usb",
 ]
-

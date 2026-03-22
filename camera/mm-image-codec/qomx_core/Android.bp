@@ -33,7 +33,7 @@ cc_library_shared {
         "libdl",
     ],
     header_libs: [
-        "OmxCore_headers",
+        "libomxcore_headers",
         "qexif_headers",
     ],
 }

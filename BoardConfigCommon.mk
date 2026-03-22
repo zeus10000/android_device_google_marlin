@@ -2,7 +2,6 @@ PLATFORM_PATH := device/google/marlin
 
 # BUILD_BROKEN_*
 # Needed for /vendor/lib/dsp libraries
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # A/B
 AB_OTA_PARTITIONS += \
@@ -46,7 +45,7 @@ DEVICE_MATRIX_FILE   := $(PLATFORM_PATH)/manifests/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loop.max_part=7 androidboot.boot_devices=soc/624000.ufshc
+BOARD_KERNEL_CMDLINE += want_initramfs androidboot.force_normal_boot=1 console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loop.max_part=7 androidboot.boot_devices=soc/624000.ufshc
 BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 BOARD_KERNEL_OFFSET := 0x80000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -118,3 +117,10 @@ WIFI_DRIVER_FW_PATH_AP  := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+ALLOW_MISSING_DEPENDENCIES := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+# Soong config for HAL module naming
+
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private

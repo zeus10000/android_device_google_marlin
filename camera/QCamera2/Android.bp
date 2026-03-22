@@ -68,8 +68,8 @@ cc_library_shared {
         "android.hardware.camera.common@1.0-helper",
     ],
     header_libs: [
-        "OmxCore_headers",
-        "gralloc_headers",
+        "libomxcore_headers",
+        "display_headers",
         "media_plugin_headers",
         "generated_kernel_headers",
         "stack_common_headers",

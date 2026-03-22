@@ -376,6 +376,8 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl:64 \
     android.hardware.sensors@1.0-service \
     sensors.nanohub \
+    libhubconnection \
+    libdynamic_sensor_ext \
     nanoapp_cmd
 
 PRODUCT_COPY_FILES += \

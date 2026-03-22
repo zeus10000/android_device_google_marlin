@@ -1,0 +1,94 @@
+// Display HAL prebuilt libraries from LOS22
+
+cc_prebuilt_library_shared {
+    name: "gralloc.msm8996",
+    vendor: true,
+    relative_install_path: "hw",
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["gralloc.msm8996_64.so"] },
+        android_arm: { srcs: ["gralloc.msm8996_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "hwcomposer.msm8996",
+    vendor: true,
+    relative_install_path: "hw",
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["hwcomposer.msm8996_64.so"] },
+        android_arm: { srcs: ["hwcomposer.msm8996_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "libsdmcore",
+    vendor: true,
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["libsdmcore_64.so"] },
+        android_arm: { srcs: ["libsdmcore_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "libqservice",
+    vendor: true,
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["libqservice_64.so"] },
+        android_arm: { srcs: ["libqservice_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "libqdutils",
+    vendor: true,
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["libqdutils_64.so"] },
+        android_arm: { srcs: ["libqdutils_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "libsdmutils",
+    vendor: true,
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["libsdmutils_64.so"] },
+        android_arm: { srcs: ["libsdmutils_32.so"] },
+    },
+    compile_multilib: "both",
+}
+
+cc_prebuilt_library_shared {
+    name: "libqdMetaData",
+    vendor: true,
+    check_elf_files: false,
+    prefer: true,
+    strip: { none: true },
+    target: {
+        android_arm64: { srcs: ["libqdMetaData_64.so"] },
+        android_arm: { srcs: ["libqdMetaData_32.so"] },
+    },
+    compile_multilib: "both",
+}

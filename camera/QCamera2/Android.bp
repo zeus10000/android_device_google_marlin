@@ -37,6 +37,7 @@ cc_library_shared {
         "-Wextra",
         "-Werror",
         "-Wno-implicit-fallthrough",
+        "-Wno-unused-but-set-variable",
         "-DSYSTEM_HEADER_PREFIX=sys",
         "-DHAS_MULTIMEDIA_HINTS",
         "-D_ANDROID",

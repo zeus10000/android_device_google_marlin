@@ -381,7 +381,7 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1> *currentPortStatus_1_1,
 
   if (result == Status::SUCCESS) {
     currentPortStatus_1_1->resize(names.size());
-    for (const std::pair<std::string, bool>& port : names) {
+    for (const auto& port : names) {
       i++;
       ALOGI("%s", port.first.c_str());
       (*currentPortStatus_1_1)[i].status.portName = port.first;

@@ -447,9 +447,7 @@ VENDOR_SECURITY_PATCH := 2019-10-06
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.marlin
+# Vibrator: HIDL removed in Android 16, AIDL port pending
 
 # VINTF
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true

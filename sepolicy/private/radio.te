@@ -1,6 +1,1 @@
-# Marlin-specific radio permissions
-#
-# uce_service is registered by vendor_dataservice_app (see upstream
-# device/qcom/sepolicy-legacy-um/generic/private/dataservice_app.te).
-# On modern qcom sepolicy, CNE and UCE services run in
-# vendor_dataservice_app, not in radio or system_app domains.
+add_service(radio, uce_service)

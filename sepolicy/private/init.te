@@ -1,4 +1,8 @@
-# init needs bootctl binder access for A/B mark-boot-successful
-binder_call(init, hal_bootctl_server)
-allow init hal_bootctl_service:service_manager find;
-allow init system_file:file execute_no_trans;
+# Marlin-specific init permissions
+#
+# bootctl access from init is blocked by upstream neverallow rules;
+# only hal_bootctl_client (used by update_engine) may talk to the
+# bootctl HAL. All A/B slot manipulation happens via update_engine,
+# not init.
+#
+# This file is reserved for marlin-specific supplementary rules.

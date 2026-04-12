@@ -225,11 +225,11 @@ on zygote-start
     chown system system /data/connectivity
 
     # Create the directories used by DPM subsystem
-    mkdir /data/dpm 0771 system system
-    chown system system /data/dpm
+    # /data/dpm created by vendor_dpmd daemon itself (it has create_dir_perms
+    # via device/qcom/sepolicy-legacy-um/qva/private/dpmd.te). Doing it here
+    # from vendor_init violates the neverallow on vendor_init -> data_file_type.
 
-    mkdir /data/dpm/nsrm 0771 system system
-    chown system system /data/dpm/nsrm
+    # /data/dpm/nsrm — same as above, created by vendor_dpmd.
 
     # Create directory used by audio subsystem
     mkdir /data/vendor/audio 0770 audio audio
@@ -539,7 +539,6 @@ on property:wc_transport.start_root=false
     stop vendor.hci_filter_root
 
 service vendor.per_mgr /vendor/bin/pm-service
-    disabled
     class core
     user system
     group system

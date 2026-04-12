@@ -3,3 +3,6 @@ allow init persist_file:dir mounton;
 allow init debugfs_ipc:{ dir file } relabelfrom;
 allow init debugfs_usb:{ dir file } relabelfrom;
 allow init sysfs_scsi_devices_0000:file write;
+
+# Allow init to open sysfs_scsi_devices_0000 (discard_max_bytes et al)
+allow init sysfs_scsi_devices_0000:file { open read };

@@ -1,0 +1,5 @@
+service vendor.per_mgr /vendor/bin/vendor.peripheral_mgr_stub
+    class core
+    user system
+    group system
+    override

@@ -1,7 +1,5 @@
-vndbinder_use(hal_gnss_default)
-binder_call(hal_gnss_default, vendor_per_mgr);
+use_vendor_per_mgr(hal_gnss_default)
 allow hal_gnss_default default_android_service:service_manager { add find };
-allow hal_gnss_default vendor_per_mgr_service:service_manager { add find} ;
 
 typeattribute hal_gnss_default data_between_core_and_vendor_violators;
 allow hal_gnss_default location_data_file:dir { search write };
@@ -31,3 +29,6 @@ dontaudit hal_gnss_default self:udp_socket create;
 
 get_prop(hal_gnss_default, default_prop)
 get_prop(hal_gnss_default, system_prop)
+
+# GNSS HAL reads boot_status_prop for boot completion check
+get_prop(hal_gnss_default, boot_status_prop)

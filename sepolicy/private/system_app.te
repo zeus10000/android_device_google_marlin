@@ -1,1 +1,7 @@
-add_service(system_app, vendor_cne_service)
+# Marlin-specific system_app permissions
+#
+# CNEService (system_app domain) needs to find vendor_cne_service
+# registered by vendor_dataservice_app. Only find, not add — the
+# add_service neverallow in dataservice_app.te restricts registration
+# to vendor_dataservice_app only.
+allow system_app vendor_cne_service:service_manager find;

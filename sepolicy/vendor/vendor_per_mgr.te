@@ -1,30 +1,18 @@
-# Policy for /vendor/bin/pm-service
-allow vendor_per_mgr self:capability net_bind_service;
+# Marlin-specific additions for /vendor/bin/pm-service
+# Core rules come from device/qcom/sepolicy-legacy-um/legacy/vendor/common/peripheral_manager.te
 
-add_service(vendor_per_mgr, vendor_per_mgr_service)
-
-vndbinder_use(vendor_per_mgr)
-binder_call(vendor_per_mgr, default_android_service)
-binder_call(vendor_per_mgr, rild)
-binder_call(vendor_per_mgr, servicemanager)
-binder_call(vendor_per_mgr, vendor_per_proxy)
-
-allow vendor_per_mgr default_android_service:service_manager { add find };
-
-allow vendor_per_mgr firmware_file:dir search;
-allow vendor_per_mgr firmware_file:file r_file_perms;
-allow vendor_per_mgr self:socket create_socket_perms;
-allowxperm vendor_per_mgr self:socket ioctl msm_sock_ipc_ioctls;
-allow vendor_per_mgr ssr_device:chr_file { open read };
-
-allow vendor_per_mgr sysfs:dir r_dir_perms;
-
+# Allow reading msm subsystem sysfs nodes for modem state detection
 r_dir_file(vendor_per_mgr, sysfs_msm_subsys)
 
-userdebug_or_eng(`
-  allow rild ssr_device:chr_file { open read };
-')
+# Read boot_status_prop to know when modem firmware loading is complete
+get_prop(vendor_per_mgr, boot_status_prop)
 
+# Read vendor config files for per-peripheral tunables
 allow vendor_per_mgr vendor_file:dir read;
 
-get_prop(vendor_per_mgr, boot_status_prop)
+# Legacy Qualcomm pm-service/pm-proxy binaries talk to the regular
+# servicemanager (not vndservicemanager) for service registration.
+# This predates the Android vndbinder isolation and cannot be fixed
+# without source access to the proprietary binary.
+binder_call(vendor_per_mgr, servicemanager)
+allow vendor_per_mgr default_android_service:service_manager { add find };

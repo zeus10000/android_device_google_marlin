@@ -1,1 +1,4 @@
 get_prop(nfc, hw_sku_prop);
+
+# NFC system server accesses nfc vendor data directory
+allow nfc nfc_vendor_data_file:dir search;

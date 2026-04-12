@@ -1,0 +1,8 @@
+cc_library_shared {
+    name: "libpermalloc",
+    vendor: true,
+    srcs: ["permalloc.c"],
+    cflags: ["-Wall", "-Werror", "-Wno-unused-parameter"],
+    // No shared_libs — standalone, no libc dependency for alloc functions
+    allow_undefined_symbols: true,
+}

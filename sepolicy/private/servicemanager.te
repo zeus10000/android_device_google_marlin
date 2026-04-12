@@ -1,2 +1,8 @@
-# servicemanager needs to transfer binder calls to init for bootctl
-allow servicemanager init:binder transfer;
+# Marlin-specific servicemanager permissions
+#
+# Upstream neverallow blocks servicemanager from transferring binder
+# to init. This is intentional — init should not participate in binder
+# as a client of HAL services. hal_bootctl_client handles bootctl
+# interaction from update_engine.
+#
+# This file is reserved for marlin-specific supplementary rules.

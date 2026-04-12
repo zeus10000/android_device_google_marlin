@@ -1,2 +1,8 @@
-# crash_dump needs ptrace on keystore (b/376065666)
-allow crash_dump keystore:process ptrace;
+# Marlin-specific crash_dump permissions
+#
+# Android 16 enforces a neverallow preventing crash_dump from ptracing
+# keystore (it would leak cryptographic key material into tombstones).
+# Keystore crashes are instead handled via partial tombstones without
+# ptrace details, per the upstream security model.
+#
+# This file is reserved for marlin-specific supplementary rules.

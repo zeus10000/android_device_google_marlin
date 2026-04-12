@@ -1,0 +1,22 @@
+// NFC firmware blob for NXP PN551 controller
+//
+// libpn551_fw.so is named as a shared library but is actually a firmware
+// blob loaded by the NXP NFC HAL at runtime (NXP_FW_TYPE=0x01 in
+// libnfc-nxp.marlin.conf). Install via cc_prebuilt_library_shared so it
+// ends up at /vendor/lib/libpn551_fw.so where the HAL expects it.
+//
+// check_elf_files is disabled because this blob does not follow standard
+// shared-library ABI conventions (no NEEDED entries, not linked at runtime
+// by the dynamic linker).
+
+cc_prebuilt_library_shared {
+    name: "libpn551_fw",
+    owner: "google",
+    vendor: true,
+    check_elf_files: false,
+    strip: { none: true },
+    prefer: true,
+    target: {
+        android_arm64: { srcs: ["libpn551_fw.so"] },
+    },
+}

@@ -1,0 +1,11 @@
+cc_binary {
+    name: "vendor.peripheral_mgr_stub",
+    vendor: true,
+    srcs: ["main.cpp"],
+    shared_libs: [
+        "libbinder",
+        "liblog",
+        "libutils",
+    ],
+    init_rc: ["vendor.peripheral_mgr_stub.rc"],
+}

@@ -1,0 +1,17 @@
+# Gate netd startup on BPF programs being loaded.
+#
+# On marlin with 4.4 kernel + 5.4 BPF backport, bpfloader takes ~30s to
+# verify and JIT-compile all BPF programs. Upstream Android assumes
+# bpfloader completes in <2s, so netd (class main, updatable) starts
+# before bpf.progs_loaded is set. Without BPF maps, libnetd_updatable_init
+# fails and netd exits.
+#
+# This override disables netd at boot and re-enables it once bpfloader
+# has set bpf.progs_loaded=1.
+
+on early-init
+    stop netd
+
+on property:bpf.progs_loaded=1
+    enable netd
+    start netd

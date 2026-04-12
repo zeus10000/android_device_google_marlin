@@ -3,3 +3,9 @@ allow rild system_data_file:dir getattr;
 allow rild radio_core_data_file:dir { search getattr };
 allow rild radio_core_data_file:file { read write getattr open };
 get_prop(rild, boot_status_prop)
+
+# rild needs full access to qcril.db in /data/misc/radio and /vendor
+allow rild radio_core_data_file:dir { read open };
+allow rild radio_core_data_file:file { ioctl lock };
+allow rild vendor_file:file ioctl;
+get_prop(rild, default_prop)

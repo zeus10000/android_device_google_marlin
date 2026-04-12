@@ -1,0 +1,4 @@
+# Allow secure_element (app with levelFrom=all) to manage its own app data
+# files even across MCS categories (needed for ART OAT compilation)
+allow secure_element system_data_file:dir { add_name remove_name write };
+allow secure_element system_data_file:file { create open write rename unlink };

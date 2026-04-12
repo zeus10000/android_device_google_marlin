@@ -307,8 +307,7 @@ PRODUCT_COPY_FILES += \
     device/google/marlin/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf \
     device/google/marlin/nfc/libnfc-nxp.$(PRODUCT_HARDWARE).conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
-PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpn551_fw.so
+PRODUCT_PACKAGES += libpn551_fw
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
@@ -447,7 +446,9 @@ VENDOR_SECURITY_PATCH := 2019-10-06
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
-# Vibrator: HIDL removed in Android 16, AIDL port pending
+# Vibrator (AIDL v3)
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator-service.marlin
 
 # VINTF
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
@@ -477,12 +478,14 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := false
 PRODUCT_PACKAGES += vulkan.pastel
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.bpf.kver_override=5.4.312
 PRODUCT_VENDOR_PROPERTIES += ro.bpf.kver_override=5.4.312
-PRODUCT_VENDOR_PROPERTIES += init.svc_debug.no_fatal.surfaceflinger=true
 PRODUCT_VENDOR_PROPERTIES += sys.oem_unlock_allowed=0
 PRODUCT_COPY_FILES += device/google/marlin/init.marlin_bootfix.rc:vendor/etc/init/init.marlin_bootfix.rc
+PRODUCT_COPY_FILES += device/google/marlin/init-files/init.marlin_netd.rc:vendor/etc/init/init.marlin_netd.rc
 
 PRODUCT_PACKAGES += gralloc.msm8996 hwcomposer.msm8996 libsdmcore libqservice libqdutils libsdmutils libqdMetaData
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=mtp,adb
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.adb.root=1
 PRODUCT_COPY_FILES += device/google/marlin/adb/adb_keys:vendor/adb_keys
 PRODUCT_VENDOR_PROPERTIES += ro.adb.secure?=0
+PRODUCT_PACKAGES += libpermalloc
+PRODUCT_PACKAGES += vendor.peripheral_mgr_stub

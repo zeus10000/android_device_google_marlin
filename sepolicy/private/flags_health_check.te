@@ -1,2 +1,7 @@
-# flags_health_check needs to read all property files to check feature flags
-get_prop(flags_health_check, property_type)
+# Marlin-specific flags_health_check permissions
+#
+# The base rules for flags_health_check live in
+# system/sepolicy/private/flags_health_check.te and already grant access
+# to the device_config_*_prop types this process legitimately needs.
+#
+# This file is reserved for marlin-specific supplementary rules.

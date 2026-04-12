@@ -14,3 +14,6 @@ allow init_foreground vendor_toolbox_exec:file { execute execute_no_trans read o
 # pgrep needs to scan /proc
 r_dir_file(init_foreground, domain)
 allow init_foreground domain:dir getattr;
+
+# Allow init_foreground to setsched on kernel threads
+allow init_foreground kernel:process setsched;

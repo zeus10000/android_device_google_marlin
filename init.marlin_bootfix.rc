@@ -1,4 +1,6 @@
-on post-fs-data
-    # Mark boot as successful to prevent A/B rollback
-    exec -- /system/bin/bootctl mark-boot-successful
-    setprop sys.boot_completed 1
+# Marlin-specific early-boot init actions.
+#
+# Reserved for future marlin-specific init triggers. Do not use this file
+# to set sys.boot_completed or call bootctl mark-boot-successful — the
+# A/B boot verifier (update_engine cleanup_previous_update_action) handles
+# MarkBootSuccessful after genuine boot_completed, as AOSP intends.

@@ -1,4 +1,9 @@
-allow vendor_init vendor_dpmd_data_file:file rw_file_perms;
-allow vendor_init vendor_dpmd_data_file:dir create_dir_perms;
-allow vendor_init boot_status_prop:property_service set;
-allow vendor_init build_prop:property_service set;
+# Marlin-specific vendor_init permissions
+#
+# vendor_dpmd_data_file is managed by vendor_dpmd and system_server
+# directly (see device/qcom/sepolicy-legacy-um/qva/private/dpmd.te and
+# system_server.te). vendor_init does not need to touch this data file
+# type; any directory creation is handled by the upstream init rules
+# for data partition setup.
+#
+# This file is reserved for marlin-specific supplementary rules.

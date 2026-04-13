@@ -49,4 +49,7 @@
 
     <!-- Config SoftAP 2G channel list -->
     <string  translatable="false" name="config_wifi_framework_sap_2G_channel_list">6</string>
+
+    <!-- QCA6174A does not support SAE Hash-to-Element (H2E) via NL80211_ATTR_SAE_PWE -->
+    <bool translatable="false" name="config_wifiSaeH2eSupported">false</bool>
 </resources>

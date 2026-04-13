@@ -480,7 +480,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.bpf.kver_override=5.4.312
 PRODUCT_VENDOR_PROPERTIES += ro.bpf.kver_override=5.4.312
 PRODUCT_VENDOR_PROPERTIES += sys.oem_unlock_allowed=0
 PRODUCT_COPY_FILES += device/google/marlin/init.marlin_bootfix.rc:vendor/etc/init/init.marlin_bootfix.rc
-PRODUCT_COPY_FILES += device/google/marlin/init-files/init.marlin_netd.rc:vendor/etc/init/init.marlin_netd.rc
 
 PRODUCT_PACKAGES += gralloc.msm8996 hwcomposer.msm8996 libsdmcore libqservice libqdutils libsdmutils libqdMetaData
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=mtp,adb
